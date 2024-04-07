@@ -10,7 +10,7 @@
 		<div id="home_imgupload">
 			<div class="imgupload_top">
 					一键上传井盖图片 智能识别井盖隐患~
-		</div>	
+		    </div>
 		<div id="imgupload_font">
 			Image Upload
 		</div>
@@ -18,24 +18,31 @@
 			最大可上传6.00MB的图片，单次同时可选择10张。
 		</div>
 		<div id="border">
-			<div id="upload_part">
+			<div id="dropzone">
+				<div id="preview"></div>
 				拖拽文件到这里 ...
-		<br><a>支持多文件同时上传</a>
+				<br><a>支持多文件同时上传</a>
+
+				<input type="file" id="imageUpload" style="display: none;" accept="image/*">
+
 			</div>
+
 		</div>
 
 		<div id="imgupload_bottom">
-			<a>选择文件...</a>
+
 			
 			<div id="bottom_btn_div">
-				
+
 			<button id="img_btn"><span><img id="img_img" src="img/图片 (2).png">选择..</button>
-				<input type="file" id="imageUpload" style="display: none;" accept="image/*">
-				<script src="home.js"></script>
+
+
 			<a href="https://map.baidu.com/"><button id="position_btn"><img src="img/定位 (1).png"></button></a>
 		
 			</div>
 		</div>
+
 		</div>
+		<script src="home.js"></script>
 	</body>
 </html>
