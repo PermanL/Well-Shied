@@ -1,5 +1,4 @@
-
-    document.getElementById('img_btn').addEventListener('click', function(e) {
+document.getElementById('img_btn').addEventListener('click', function(e) {
     document.getElementById('imageUpload').click();
 
 });
