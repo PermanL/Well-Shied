@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="content-box">
+    <img :src="headerImage()" alt="" class="ai-header-logo" @click="returnToHome">
+    <section>
+        <div class="login-box">
+            <img src="/auth/resources/ar0lj/login/jiutian-20240329/img/oi-logo.png" alt="" style="margin-bottom:30px;width:300px;height:auto;" v-if="isOI">
+            <img src="/auth/resources/ar0lj/login/jiutian-20240329/img/ai-logo.png" alt="" style="margin-bottom:30px" v-else>
+            <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="https://jiutian.10086.cn/auth/realms/TechnicalMiddlePlatform/login-actions/authenticate?session_code=SKErz0hOHbR-6hohv8nhV1VNAeEwFvRwtKXWCJQl1ME&amp;execution=68bf6e37-5d84-4af0-81b2-b853465ac176&amp;client_id=dlp-train-front&amp;tab_id=Ji4_OMPooVU" method="post">
+                <div>
+                    <ul class="nav nav-pills nav-justified login-box-select">
+                        <li class="login-box-select-item" role="presentation" v-bind:class="{ active: !usernameOrPhone }" v-on:click="toggleLogin(1,'click')"><a href="#">短信登录</a></li>
+                        <li class="login-box-select-item" role="presentation" v-bind:class="{ active: usernameOrPhone }" v-on:click="toggleLogin(2,'click')"><a href="#">密码登录</a></li>
+                    </ul>
+                    <div style="height:40px">
+                        <div class="alert">
+                            <span id="code-error" v-if="ifCodeError">{{codeErrorText}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="usernameOrPhone">
+                    <div class="input-row">
+                        <span class="iconfont iconyonghu"></span>
+                        <input @input="showErrorMsg = false;" :placeholder="usernameText" tabindex="1" id="username" class="input " name="username" value="p12345"  type="text" autofocus autocomplete="off" />
+                    </div>
+                    <div class="input-row">
+                        <span class="iconfont iconsuo"></span>
+                        <input @input="showErrorMsg = false;" placeholder="密码" tabindex="2" id="password" class="input input-password " name="password" :type="showPassword?'text':'password'" autocomplete="off" />
+                        <span class="iconfont" :class="{iconeye:showPassword,'iconeye-close':!showPassword}" @click="showPassword = !showPassword"></span>
+                    </div>
+                </div>
+                <div v-else="!usernameOrPhone">
+                    <div class="input-row">
+                        <span class="iconfont iconshouji">
+                            <img src="/auth/resources/ar0lj/login/jiutian-20240329/img/mobile.png">
+                        </span>
+                        <input @input="checkPhoneNumber" placeholder="手机号" type="text" id="phoneNumber" name="phoneNumber" v-model="phoneNumber" class="input" autofocus/>
+                        <div style="height:1px" v-if="ifWrongPhone">
+                            <span style="color: #FF454D;font-size:12px;">{{phoneWrongText}}</span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left:0px;margin-bottom:24px">
+                        <div class="input-row col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <span class="iconfont iconsuo"></span>
+                            <input @input="showErrorMsg = false;"  id="code" placeholder="短信验证码"  name="code" class="input" tabindex="3" autofocus/>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <input @input="showErrorMsg = false;" :class="(sendButtonText !== initSendButtonText || ifWrongPhone || phoneNumber==='') ?'button codeStyle':'button'" type="button" v-model="sendButtonText" :disabled='sendButtonText !== initSendButtonText || ifWrongPhone|| phoneNumber==="" ' v-on:click="ifWrongPhone?null:sendVerificationCode()"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-row kc-form-options">
+                    <div id="kc-form-options">
+                        <div class="checkbox">
+                            <label>
+                                <input tabindex="4" id="rememberMe" name="rememberMe" type="checkbox" checked> <span class="auto-login">下次自动登录</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div v-if="usernameOrPhone" class="">
+                        <span><a tabindex="5" :href="getUrlWithQuery('/auth/realms/TechnicalMiddlePlatform/login-actions/reset-credentials?client_id=dlp-train-front&amp;tab_id=Ji4_OMPooVU')" class="link-button" style="color:#606972">忘记密码</a></span>
+                    </div>
+                </div>
+
+                <div id="kc-form-buttons" class="">
+                    <input type="hidden" id="id-hidden-input" name="credentialId" />
+                    <span tabindex="4" class="button" name="login" id="kc-login" @click="login">登录</span>
+                    <input type="hidden" id="loginType" name="loginType" :value="origin"/>
+                </div>
+
+                <div class="register">
+                    <a tabindex="2" @click="()=>returnToPreviousPage()" class="link-button">« 返回</a>
+                    <span>
+                            没有账号？
+                            <a tabindex="6" class="link-button" :href="getUrlWithQuery('/auth/realms/TechnicalMiddlePlatform/login-actions/registration?client_id=dlp-train-front&amp;tab_id=Ji4_OMPooVU')">立即注册</a>
+                        </span>
+                </div>
+            </form>
+        </div>
+        <p class="copy-right">Copyright @ 2013-2023 China Mobile 京ICP备05002571号-5</p>
+    </section>
+</div>
+</body>
+</html>
