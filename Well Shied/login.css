@@ -9,10 +9,13 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #0d273e;
-   /* background: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fc%2F584e0d5a73e10.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1669887083&t=9b6ddb0fcebdff56c5dde0c5635aaea7") no-repeat;*/
+
+        transition: background-image 0.5s ease; /* 平滑过渡背景图片 */
+
+    background-image: url("img/login.jpg");
     background-size:100%;
 }
+
 h1{
     color: rgba(255,255,255,0.7);
     margin-bottom: 5px;
@@ -23,7 +26,7 @@ h1{
 .box{
     display: flex;
     flex-direction: column;
-    justify-content: center;;
+    justify-content: center;
     align-items: center;
     width: 360px;
     height: 380px;
@@ -60,7 +63,7 @@ h2{
     font-size: 14px;
     height: 35px;
     width: 250px;
-    background: #0d273e;
+    background: #DFF6FE;
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 5px;
     transition: 0.3s;
@@ -90,12 +93,22 @@ a:hover{
 }
 
 
-button{
+button1{
     width: 120px;
     height: 35px;
     border:  1px solid rgba(197,81,58,0.8);
     background: rgba(197,81,58,0.5);
     color: rgba(255,255,255,0.9);
+    border-radius: 5px;
+    margin-top: 20px;
+
+
+}
+button{
+    width: 120px;
+    height: 35px;
+    border:  1px solid rgba(197,81,58,0.8);
+   background-color:#2A6EC3;
     border-radius: 5px;
     margin-top: 20px;
 
