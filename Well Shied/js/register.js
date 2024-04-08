@@ -5,7 +5,7 @@ var button = document.getElementById('register');
 button.addEventListener('click', function() {
     alert('注册成功，自动登录');
     // 当按钮被点击时，显示一个弹框
-    window.location.href = 'home.html';
+    window.location.href = 'login_after_home.html';
 });
 function submitLogin() {
 
