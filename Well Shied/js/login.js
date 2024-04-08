@@ -4,7 +4,7 @@ var button = document.getElementById('login');
 // 为按钮添加点击事件监听器
 button.addEventListener('click', function() {
     // 当按钮被点击时，显示一个弹框
-    window.location.href = 'home.html';
+    window.location.href = 'login_after_home.html';
 });
 function submitLogin() {
     // 假设你有一个表单元素，其ID为'loginForm'

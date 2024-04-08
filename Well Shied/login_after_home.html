@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<script>
+		window.onload = function() {
+			// 显示登录成功的弹窗提示
+			alert('登录成功！');
+		};
+	</script>
+	<link rel="stylesheet"  href="index.css">
+	<link rel="stylesheet"  href="home.css">
+	<link rel="stylesheet"  href="eqiupment.css">
+	<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+	
+	<div class="navbar">
+		<div id="top">
+			<p id="p1">欢迎你，管理员</p>
+		</div>
+	        <input type="checkbox" id="checkbox" alt="" checked>
+	        <label for="checkbox">
+	            <i class="fa fa-bars" aria-hidden="true"></i>
+	        </label>
+	        <ul>
+				<li style="background-color: #0d273e;">
+						<img id="img_cgyd" src="img/中国移动.png">	
+						<img id="img_logo" src="img/LOGO.png">	
+				</li>
+	            <li>
+						<img id="img_logofont" src="img/logo文字.png">	
+	            </li>
+	            <li>
+	                <a href="#"  >
+	                    <i class="fa fa-home" aria-hidden="true"></i>
+	
+	                    <span>首页</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="equipment.html">
+	                    <i class="fa fa-sitemap" aria-hidden="true"></i>
+	
+	                    <span>添加设备</span>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="history.html">
+	                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+	
+	                    <span>历史记录</span>
+	                </a>
+	            </li>
+	           
+	        </ul>
+	    </div>
+	<div id="home_imgupload">
+		<div class="imgupload_top">
+				一键上传井盖图片 智能识别井盖隐患~
+	    </div>
+
+	    <div id="imgupload_font">
+		Image Upload
+	    </div>
+	    <div id="prompt">
+		<P>最大可上传6.00MB的图片，单次同时可选择10张。</P>
+			<button id="upload_button" >上传</button>
+	    </div>
+	    <div id="border">
+		<div id="dropzone">
+						<div id="preview"></div>
+						拖拽文件到这里 ...
+						<br><a>支持多文件同时上传</a>
+		
+						<input type="file" id="imageUpload" style="display: none;" accept="image/*">
+		
+		</div>
+	     </div>
+	
+	<div id="imgupload_bottom">
+		<p>选择文件直接上传...</p>
+		
+		<div id="bottom_btn_div">
+			
+		<button id="img_btn" class="hover"><span><img id="img_img" src="img/图片 (2).png"></button>
+		<a href="https://map.baidu.com/"><button id="position_btn" ><img src="img/定位 (1).png"></button></a>
+	
+		</div>
+	</div>
+	</div>
+	<script src="js/home.js"></script>
+	
+		
+	
+	</body>
+
+</html>

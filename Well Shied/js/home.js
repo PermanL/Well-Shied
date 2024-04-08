@@ -2,21 +2,35 @@ document.getElementById('img_btn').addEventListener('click', function(e) {
     document.getElementById('imageUpload').click();
 
 });
+document.getElementById('dropzone').addEventListener('click', function(e) {
+    document.getElementById('imageUpload').click();
 
-    document.getElementById('imageUpload').addEventListener('change', function(e) {
-    var file = e.target.files[0];
-    if (file) {
-
-    // 在这里，你可以对图片进行进一步的处理，比如预览或上传到服务器
-    console.log('文件已选择:', file);
-    handleFiles(file);
-}
 });
+    document.getElementById('imageUpload').addEventListener('change', function(e) {
+        document.getElementById('imageUpload').click();
+        var file = e.target.files[0];
+        if (file) {
+
+            // 在这里，你可以对图片进行进一步的处理，比如预览或上传到服务器
+            console.log('文件已选择:', file);
+            alert('上传成功');
+            var files = e.target.file;
+            handleFiles(file);
+        }
+});
+document.getElementById('upload_button').addEventListener('click', function() {
+    var preview = document.getElementById('preview');
+
+    preview.innerHTML = ''; // 清空预览区域的内容
+    alert('上传成功');
+});
+
     // 在 home.js 文件中
     document.addEventListener('DOMContentLoaded', function() {
         var dropzone = document.getElementById('dropzone');
         var fileInput = document.getElementById('imageUpload');
-
+         var chooseFilesLink = document.getElementById('preview');
+        var upload_button = document.getElementById('upload_button');
         // 为拖拽区域添加事件监听器
         ['dragover', 'dragenter', 'drop'].forEach(function(eventName) {
             dropzone.addEventListener(eventName, function(e) {
@@ -34,7 +48,12 @@ document.getElementById('img_btn').addEventListener('click', function(e) {
             e.preventDefault(); // 阻止链接的默认行为
             fileInput.click(); // 触发文件选择对话框
         });
+        upload_button.addEventListener('click', function(e) {
+            var file = e.target.files[0]; // 获取用户选择的文件
+            var preview = document.getElementById('preview');
+            preview.innerHTML = '';
 
+        });
         // 为上传按钮添加点击事件监听器
         uploadBtn.addEventListener('click', function(e) {
             e.preventDefault(); // 阻止按钮的默认行为（如果有的话）
@@ -49,7 +68,7 @@ document.getElementById('img_btn').addEventListener('click', function(e) {
     });
     function handleFiles(files) {
         var preview = document.getElementById('preview');
-      /*  preview.innerHTML = ''; // 清空预览区域*/
+       // preview.innerHTML = ''; // 清空预览区域*/
         Array.from(files).forEach(function (file) {
             if (file.type.match('image.*')) {
                 var reader = new FileReader();
@@ -60,7 +79,9 @@ document.getElementById('img_btn').addEventListener('click', function(e) {
                         img.style.maxWidth = '100px';
                         img.style.maxHeight = '100px';
                         preview.appendChild(img);
+
                     };
+
                 })(file);
                 reader.readAsDataURL(file);
             } else {

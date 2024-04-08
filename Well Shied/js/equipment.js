@@ -11,6 +11,7 @@ var nobut = document.getElementById('no-but');
 button.addEventListener('click', function() {
 
     alert('检测到摄像头是否添加该设备');
+    alert('是否打开该设备');
     modal.style.display = "block";
 });
 
