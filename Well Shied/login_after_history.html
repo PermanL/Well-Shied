@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <link rel="stylesheet"  href="index.css">
+    <link rel="stylesheet"  href="home.css">
+    <link rel="stylesheet"  href="eqiupment.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<div class="navbar">
+    <div id="top">
+        <p id="p1">欢迎你，管理员</p>
+    </div>
+    <input type="checkbox" id="checkbox" alt="" checked>
+    <label for="checkbox">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </label>
+    <ul>
+        <li style="background-color: #0d273e;">
+            <img id="img_cgyd" src="img/中国移动.png">
+            <img id="img_logo" src="img/LOGO.png">
+        </li>
+        <li>
+            <img id="img_logofont" src="img/logo文字.png">
+        </li>
+        <li>
+            <a href="login_after_home.html"  >
+                <i class="fa fa-home" aria-hidden="true"></i>
+
+                <span>首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="login_after_equipment.html">
+                <i class="fa fa-sitemap" aria-hidden="true"></i>
+
+                <span>添加设备</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+
+                <span>历史记录</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+<div id="app">
+    <div class="mainApp" style="background-color: white;">
+        <div class="headNav">
+            <div>
+                <span>隐患类型：</span>
+                <el-select v-model="selectMessage" placeholder="请选择仓库" style="width: 200px">
+                    <el-option v-for="item in selectOption" :key="item.value" :label="item.label"
+                               :value="item.value" />
+            </div>
+            <div class="headData">
+                <span>上传时间：</span>
+                <div>
+                    <el-date-picker v-model="dataOne" type="dates" placeholder="日期" />
+                </div>
+
+            </div>
+            <el-button type="primary">查询</el-button>
+            <el-button>重置</el-button>
+        </div>
+        <div class="nextNav">
+            <el-button type="success">下载</el-button>
+            <div class="">
+                <el-select v-model="selectMessage2" placeholder="请选择展示字段" style="width: 200px">
+                    <el-option v-for="item in selectOption2" :key="item.value" :label="item.label"
+                               :value="item.value" />
+            </div>
+        </div>
+        <div class="mainTable">
+            <el-table :data="tableData" stripe style="width: 100%">
+                <el-table-column prop="date1" label="序号"></el-table-column>
+                <el-table-column prop="data2" label="图片"></el-table-column>
+                <el-table-column prop="data3" label="上传时间"></el-table-column>
+                <el-table-column prop="data4" label="位置信息"></el-table-column>
+                <el-table-column prop="data5" label="是否预测"></el-table-column>
+                <el-table-column prop="data6" label="预测类别"></el-table-column>
+                <el-table-column prop="data7" label="井盖类型"></el-table-column>
+            </el-table>
+        </div>
+        <div class="datapage">
+            <el-pagination :page-size="20" :pager-count="7" layout="prev, pager, next" :total="100" />
+        </div>
+    </div>
+</div>
+<script>
+    const App = {
+        data() {
+            return {
+                selectMessage: "请选择隐患类型",
+                selectOption: [
+                    {
+                        value: 'Option1',
+                        label: 'good',
+                    },
+                    {
+                        value: 'Option2',
+                        label: 'lose',
+                    },
+                    {
+                        value: 'Option3',
+                        label: 'broken',
+                    },
+                    {
+                        value: 'Option4',
+                        label: 'corcle',
+                    },
+                    {
+                        value: 'Option5',
+                        label: 'uncovered',
+                    },
+                ],
+                dataOne: '',
+                dataTwo: '',
+                selectMessage2: "请选择展示字段",
+                selectOption2: [
+                    {
+                        value: 'Option1',
+                        label: '序号',
+                    },
+                    {
+                        value: 'Option2',
+                        label: '图片',
+                    },
+                    {
+                        value: 'Option3',
+                        label: '上传时间',
+                    },
+                    {
+                        value: 'Option4',
+                        label: '位置信息',
+                    },
+                    {
+                        value: 'Option5',
+                        label: '是否预测',
+                    },
+                    {
+                        value: 'Option6',
+                        label: '预测类别',
+                    },
+                    {
+                        value: 'Option7',
+                        label: '井盖类型',
+                    },
+                ],
+                tableData: [
+                    { date1: 'x', data2: 'x', data3: 'x', data4: 'x', data5: 'x', data6: 'x', data7: 'x' },
+                    { date1: 'x', data2: 'x', data3: 'x', data4: 'x', data5: 'x', data6: 'x', data7: 'x' },
+                    { date1: 'x', data2: 'x', data3: 'x', data4: 'x', data5: 'x', data6: 'x', data7: 'x' },
+                    { date1: 'x', data2: 'x', data3: 'x', data4: 'x', data5: 'x', data6: 'x', data7: 'x' },
+                    { date1: 'x', data2: 'x', data3: 'x', data4: 'x', data5: 'x', data6: 'x', data7: 'x' },
+                    { date1: 'x', data2: 'x', data3: 'x', data4: 'x', data5: 'x', data6: 'x', data7: 'x' },
+                    { date1: 'x', data2: 'x', data3: 'x', data4: 'x', data5: 'x', data6: 'x', data7: 'x' },
+                    { date1: 'x', data2: 'x', data3: 'x', data4: 'x', data5: 'x', data6: 'x', data7: 'x' },
+                    { date1: 'x', data2: 'x', data3: 'x', data4: 'x', data5: 'x', data6: 'x', data7: 'x' },
+                ]
+            };
+        },
+    };
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
+
+
+
+</body>
+<style>
+    #app{
+        width: 90%;
+        height: 600px;
+
+        position: absolute;
+        top:80px;
+        left: 180px;
+    }
+    .mainApp {
+        background-color: rgba(128, 128, 128, 0.166);
+        width: 1150px;
+        height: 700px;
+        margin: 0 auto;
+    }
+
+    .headNav {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .headData {
+        display: flex;
+        align-items: center;
+    }
+
+    .nextNav {
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mainTable {
+        padding: 10px;
+    }
+
+    .datapage {
+        padding-right: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>
+
+</html>
