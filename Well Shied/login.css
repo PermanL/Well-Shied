@@ -12,7 +12,7 @@ body{
 
         transition: background-image 0.5s ease; /* 平滑过渡背景图片 */
 
-    background-image: url("img/c.jpg");
+    background-image: url("img/d.png");
     background-size:100%;
 }
 
@@ -69,6 +69,7 @@ h2{
     transition: 0.3s;
     outline: none;
     padding: 0 10px;
+    caret-color: #153654;
 }
 .input-box > input:focus{
     border: 1px solid rgba(255,255,255,0.8);
